@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://example.org/> 
+
+SELECT  ?person
+WHERE {?person rdf:type :Person
+      FILTER ( :jane != ?person )
+      FILTER NOT EXISTS {:jane :friend ?person}
+  }
+
+
+
+
+
+
+
+
+
