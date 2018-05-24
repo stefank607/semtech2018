@@ -1,0 +1,513 @@
+@prefix : <http://www.example.org/AustrianWorldCupWinners#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/AustrianWorldCupWinners> .
+
+<http://www.example.org/AustrianWorldCupWinners> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.example.org/AustrianWorldCupWinners#hasTakenPlace
+
+:hasTakenPlace rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain :Worldcup ;
+               
+               rdfs:range :Year .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#hasWon
+
+:hasWon rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :Skier ;
+        
+        rdfs:range :Worldcup .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.example.org/AustrianWorldCupWinners#firstName
+
+:firstName rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Skier ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#lastName
+
+:lastName rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Skier ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#worldcupName
+
+:worldcupName rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Worldcup ;
+              
+              rdfs:range xsd:string ;
+              
+              rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#year
+
+:year rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Year ;
+      
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:onDatatype xsd:int ;
+                   owl:withRestrictions ( [ xsd:maxInclusive 2100
+                                          ]
+                                          [ xsd:maxInclusive 1990
+                                          ]
+                                        )
+                 ] .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.example.org/AustrianWorldCupWinners#CombinedWC
+
+:CombinedWC rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#DownhillWC
+
+:DownhillWC rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#GiantSlalomWC
+
+:GiantSlalomWC rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Lady
+
+:Lady rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Skier .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Man
+
+:Man rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Skier .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#OverallWC
+
+:OverallWC rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Skier
+
+:Skier rdf:type owl:Class .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SlalomWC
+
+:SlalomWC rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperGWC
+
+:SuperGWC rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Worldcup .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Worldcup
+
+:Worldcup rdf:type owl:Class .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Year
+
+:Year rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1990
+
+<http://www.example.org/AustrianWorldCupWinners#1990> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1991
+
+<http://www.example.org/AustrianWorldCupWinners#1991> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1992
+
+<http://www.example.org/AustrianWorldCupWinners#1992> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1993
+
+<http://www.example.org/AustrianWorldCupWinners#1993> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1994
+
+<http://www.example.org/AustrianWorldCupWinners#1994> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1997
+
+<http://www.example.org/AustrianWorldCupWinners#1997> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1998
+
+<http://www.example.org/AustrianWorldCupWinners#1998> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#1999
+
+<http://www.example.org/AustrianWorldCupWinners#1999> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2000
+
+<http://www.example.org/AustrianWorldCupWinners#2000> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2001
+
+<http://www.example.org/AustrianWorldCupWinners#2001> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2002
+
+<http://www.example.org/AustrianWorldCupWinners#2002> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2003
+
+<http://www.example.org/AustrianWorldCupWinners#2003> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2004
+
+<http://www.example.org/AustrianWorldCupWinners#2004> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2005
+
+<http://www.example.org/AustrianWorldCupWinners#2005> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2006
+
+<http://www.example.org/AustrianWorldCupWinners#2006> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2007
+
+<http://www.example.org/AustrianWorldCupWinners#2007> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2008
+
+<http://www.example.org/AustrianWorldCupWinners#2008> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2009
+
+<http://www.example.org/AustrianWorldCupWinners#2009> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2010
+
+<http://www.example.org/AustrianWorldCupWinners#2010> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#2015
+
+<http://www.example.org/AustrianWorldCupWinners#2015> rdf:type :Year ,
+                                                               owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Alexandra_Meissnitzer
+
+:Alexandra_Meissnitzer rdf:type owl:NamedIndividual ;
+                       
+                       :lastName "Meissnitzer" ;
+                       
+                       :firstName "AlexandraMeissnitzer" ;
+                       
+                       :hasWon :GiantSlalom1998 .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Downhill1999
+
+:Downhill1999 rdf:type :DownhillWC ,
+                       owl:NamedIndividual ;
+              
+              :worldcupName "Downhill" ;
+              
+              :year "1999" ;
+              
+              :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#1999> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Downhill2000
+
+:Downhill2000 rdf:type :DownhillWC ,
+                       owl:NamedIndividual ;
+              
+              :worldcupName "Downhill" ;
+              
+              :year "2000" ;
+              
+              :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#2000> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#GiantSlalom1997
+
+:GiantSlalom1997 rdf:type :GiantSlalomWC ,
+                          owl:NamedIndividual ;
+                 
+                 :year "1997" ;
+                 
+                 :worldcupName "GiantSlalom" ;
+                 
+                 :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#1997> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#GiantSlalom1998
+
+:GiantSlalom1998 rdf:type :GiantSlalomWC ,
+                          owl:NamedIndividual ;
+                 
+                 :year "1998" ;
+                 
+                 :worldcupName "GiantSlalom" ;
+                 
+                 :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#1998> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#GiantSlalom1999
+
+:GiantSlalom1999 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#GiantSlalom2000
+
+:GiantSlalom2000 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Herminator
+
+:Herminator rdf:type :Man ,
+                     :Skier ,
+                     owl:NamedIndividual ;
+            
+            :lastName "Maier" ;
+            
+            :firstName "Herrman" ;
+            
+            :hasWon :GiantSlalom1997 ,
+                    :GiantSlalom1999 ,
+                    :GiantSlalom2000 ,
+                    :Overall1997 ,
+                    :Overall1999 ,
+                    :Overall2000 ,
+                    :Overall2003 ,
+                    :SuperG1998 ,
+                    :SuperG1999 ,
+                    :SuperG2000 ,
+                    :SuperG2003 .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Overall1997
+
+:Overall1997 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Overall1999
+
+:Overall1999 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Overall2000
+
+:Overall2000 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Overall2003
+
+:Overall2003 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#Slalom2015
+
+:Slalom2015 rdf:type :SlalomWC ,
+                     owl:NamedIndividual ;
+            
+            :year "2015" ;
+            
+            :worldcupName "Slalom" ;
+            
+            :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#2015> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperG1997
+
+:SuperG1997 rdf:type :SuperGWC ,
+                     owl:NamedIndividual ;
+            
+            :worldcupName "SuperG" ;
+            
+            :year "1997" ;
+            
+            :hasTakenPlace <http://www.example.org/AustrianWorldCupWinners#1997> .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperG1998
+
+:SuperG1998 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperG1999
+
+:SuperG1999 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperG2000
+
+:SuperG2000 rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.example.org/AustrianWorldCupWinners#SuperG2003
+
+:SuperG2003 rdf:type owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
