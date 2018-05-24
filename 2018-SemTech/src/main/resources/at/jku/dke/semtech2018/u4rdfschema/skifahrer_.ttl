@@ -1,0 +1,46 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix :     <http://example.org/> .
+
+
+:hatGewonnen  a  rdf:Property;
+    rdfs:domain :Skifahrer; 
+    rdfs:range :Weltcup;
+	
+:hatStattgefunden a rdf:Property;
+	rdfs:domain :Weltcup;
+	rdfs:range :Jahr;
+	
+:Man a rdfs:Class;
+    rdfs:subClassOf :Person.
+:Woman a rdfs:Class;
+     rdfs:subClassOf :Person.
+
+:GesamtWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;
+
+:RTWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;
+	
+:SlalomWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;
+	
+:AbfahrtsWCWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;
+	
+:KombiWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;	
+	
+:SuperGWC a rdfs:Class;
+	rdfs:subClassOf:Weltcup;
+
+:Weltcup a rdfs:Class;
+	rdfs:subClassOf:GesamtWC;
+	rdfs:subClassOf:RTWC;
+	rdfs:subClassOf:SlalomWC;
+	rdfs:subClassOf:AbfahrtsWC;
+	rdfs:subClassOf:KombiWC;
+	rdfs:subClassOf:SuperGWC;
+	
+:Maier :hatGewonnen :
+	
