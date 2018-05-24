@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.example.org/AustrianWorldCupWinners#"
+     xml:base="http://www.example.org/AustrianWorldCupWinners"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.example.org/AustrianWorldCupWinners"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#hasTakenPlace -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#hasTakenPlace">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+        <rdfs:range rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#hasWon -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#hasWon">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+        <rdfs:range rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#firstName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#firstName">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#lastName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#lastName">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#worldcupName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#worldcupName">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#year -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/AustrianWorldCupWinners#year">
+        <rdfs:domain rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="&xsd;int"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="&xsd;integer">2100</xsd:maxInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="&xsd;integer">1990</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#CombinedWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#CombinedWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#DownhillWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#DownhillWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#GiantSlalomWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#GiantSlalomWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Lady -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#Lady">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Man -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#Man">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#OverallWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#OverallWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Skier -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SlalomWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#SlalomWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperGWC -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperGWC">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Worldcup -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#Worldcup"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Year -->
+
+    <owl:Class rdf:about="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1990 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1990">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1991 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1991">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1992 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1992">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1993 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1993">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1994 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1994">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1997 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1997">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1998 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1998">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#1999 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#1999">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2000">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2001">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2002 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2002">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2003 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2003">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2004 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2004">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2005 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2005">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2006 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2006">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2007 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2007">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2008 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2008">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2009 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2009">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2010 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2010">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#2015 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#2015">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Year"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Alexandra_Meissnitzer -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Alexandra_Meissnitzer">
+        <lastName>Meissnitzer</lastName>
+        <firstName>AlexandraMeissnitzer</firstName>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1998"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Downhill1999 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Downhill1999">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#DownhillWC"/>
+        <worldcupName>Downhill</worldcupName>
+        <year>1999</year>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#1999"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Downhill2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Downhill2000">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#DownhillWC"/>
+        <worldcupName>Downhill</worldcupName>
+        <year>2000</year>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#2000"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#GiantSlalom1997 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1997">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalomWC"/>
+        <year>1997</year>
+        <worldcupName>GiantSlalom</worldcupName>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#1997"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#GiantSlalom1998 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1998">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalomWC"/>
+        <year>1998</year>
+        <worldcupName>GiantSlalom</worldcupName>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#1998"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#GiantSlalom1999 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1999"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#GiantSlalom2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#GiantSlalom2000"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Herminator -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Herminator">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Man"/>
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#Skier"/>
+        <lastName>Maier</lastName>
+        <firstName>Herrman</firstName>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1997"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalom1999"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#GiantSlalom2000"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#Overall1997"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#Overall1999"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#Overall2000"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#Overall2003"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#SuperG1998"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#SuperG1999"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#SuperG2000"/>
+        <hasWon rdf:resource="http://www.example.org/AustrianWorldCupWinners#SuperG2003"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Overall1997 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Overall1997"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Overall1999 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Overall1999"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Overall2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Overall2000"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Overall2003 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Overall2003"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#Slalom2015 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#Slalom2015">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#SlalomWC"/>
+        <year>2015</year>
+        <worldcupName>Slalom</worldcupName>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#2015"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperG1997 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperG1997">
+        <rdf:type rdf:resource="http://www.example.org/AustrianWorldCupWinners#SuperGWC"/>
+        <worldcupName>SuperG</worldcupName>
+        <year>1997</year>
+        <hasTakenPlace rdf:resource="http://www.example.org/AustrianWorldCupWinners#1997"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperG1998 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperG1998"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperG1999 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperG1999"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperG2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperG2000"/>
+    
+
+
+    <!-- http://www.example.org/AustrianWorldCupWinners#SuperG2003 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/AustrianWorldCupWinners#SuperG2003"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
