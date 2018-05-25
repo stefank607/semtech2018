@@ -29,3 +29,7 @@ INSERT DATA{
 INSERT DATA {
 	:Abfahrtsweltcup1977 a :Weltcup.
 };
+
+INSERT DATA {
+	:FranzKlammer :hatGewonnen :Abfahrtsweltcup1977
+};
