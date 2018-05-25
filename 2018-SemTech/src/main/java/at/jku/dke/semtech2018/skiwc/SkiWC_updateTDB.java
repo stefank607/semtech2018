@@ -39,10 +39,6 @@ public class SkiWC_updateTDB {
 	}
 
 	public static void main(String[] args) {      
-        /* open (and create if not exists) a TDB database */
-		//String directory = "c:/dev/semtech/ue05/tdb/dataset1"; //CHANGE TO A DIRECTORY ON YOUR FILE-SYSTEM
-		//Dataset dataset = TDBFactory.createDataset(directory);
-
 		// Alternative: Use assembler file - see https://jena.apache.org/documentation/tdb/assembler.html for more information
 		Dataset dataset = TDBFactory.assembleDataset(
 				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
