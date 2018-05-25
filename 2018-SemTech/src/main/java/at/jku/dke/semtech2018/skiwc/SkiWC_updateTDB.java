@@ -22,7 +22,7 @@ import org.apache.jena.update.UpdateRequest;
  * Load data into default graph of a TDB and load named graphs
  * Set NamespacePrefixMapping
  */
-public class C4_UpdateTDB {
+public class SkiWC_updateTDB {
 
 	public static void executeUpdate(Dataset ds, File queryFile) {
 		System.out.println("\n\n------------------------------");
@@ -45,9 +45,9 @@ public class C4_UpdateTDB {
 
 		// Alternative: Use assembler file - see https://jena.apache.org/documentation/tdb/assembler.html for more information
 		Dataset dataset = TDBFactory.assembleDataset(
-				C4_UpdateTDB.class.getResource("tdb-assembler.ttl").getPath()) ;
+				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
 		
-		File updatesDir = new File(C4_UpdateTDB.class.getResource("updatesTDB").getPath());     
+		File updatesDir = new File(SkiWC_updateTDB.class.getResource("updatesTDB").getPath());     
 		File[] updates = updatesDir.listFiles();
 
 		dataset.begin(ReadWrite.WRITE); // START TRANSACTION
