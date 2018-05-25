@@ -1,5 +1,5 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ski: <http://example.org/WeltCupGewinner> 
+PREFIX : <http://example.org/> 
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT DATA {
@@ -8,16 +8,14 @@ INSERT DATA {
 };
 
 INSERT DATA {
-	:hatGewonnen a rdf:Property;
-        
-        rdfs:domain :Skifahrer;
-        
-        rdfs:range :Weltcup.
-}
-
-INSERT DATA {
 	:Women a rdfs:Class;
     rdfs:subClassOf :Person.
+};
+
+INSERT DATA {
+	:hatGewonnen a rdf:Property;     
+        rdfs:domain :Skifahrer;  
+        rdfs:range :Weltcup.    
 };
 
 INSERT DATA { 
