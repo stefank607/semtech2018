@@ -4,6 +4,7 @@ package at.jku.dke.semtech2018.skiwc;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -40,20 +41,16 @@ public class SkiDataForm {
 	}
 
 	public static void writeHatGewonnen(String name, String weltCup) throws IOException {
-		PrintStream stdout = System.out;
-		System.setOut(new PrintStream(new File("C:/dev/git/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/update2.ru")));
-
 		
-
-		BufferedReader reader = new BufferedReader(new FileReader("C:/dev/git/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/update2.ru"));
-
-		String line = 	":" + name + " :hatGewonnen : " + weltCup;
-	    System.out.println(line);
-		
-		/*
-		while((line = reader.readLine()) != null){
-		    System.out.println(line);
-		}*/
-		reader.close();
+		//TBD Generisch sämtliche Relations ausgeben
+		String line = 	"INSERT DATA { \n" + ":" + name + " :hatGewonnen : " + weltCup + "\n}";
+    	//System.out.println(":" + name + " :hatGewonnen : " + weltCup);
+    	
+        File file = new File("C:/dev/git/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/update2.ru");
+        file.createNewFile();
+        FileWriter writer = new FileWriter(file); 
+        writer.write(line); 
+        writer.flush();
+        writer.close();
 	}
 }

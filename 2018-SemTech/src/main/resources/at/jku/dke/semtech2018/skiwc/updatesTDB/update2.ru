@@ -1,3 +1,3 @@
 INSERT DATA { 
-:Test :hatGewonnen : 2
+:Hans :hatGewonnen : Test
 }
