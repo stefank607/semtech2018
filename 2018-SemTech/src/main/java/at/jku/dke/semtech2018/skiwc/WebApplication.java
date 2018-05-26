@@ -1,5 +1,7 @@
 package at.jku.dke.semtech2018.skiwc;
 
+import java.util.ArrayList;
+
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -10,7 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-
+import at.jku.dke.semtech2018.skiwc.SkiDataForm
+;
 @ComponentScan("at.jku.dke.semtech2018.web.controller")
 
 @SpringBootApplication

@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <form action="#" th:action="@{/}" th:object="${skiDataForm}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+
+<select>
+  <option value="hatGewonnen">Hat gewonnen</option>
+  <option value="hatStattgefunden">hat stattgefunden in</option>
+</select>
+
+
+                <tr>
+                    <td>Weltcup:</td>
+                    <td><input type="text" th:field="*{weltCup}" /></td>
+                    <td th:if="${#fields.hasErrors('weltCup')}" th:errors="*{weltCup}">WC Error</td>
+                </tr>
+
+
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
