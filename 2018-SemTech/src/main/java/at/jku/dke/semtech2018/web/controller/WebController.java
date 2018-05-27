@@ -40,12 +40,12 @@ public class WebController implements WebMvcConfigurer {
 		
     	//Schreibt .ru OutputFile aus eingebenen Daten in updatedTBD Folder
     	// TBD generischeFilenames + Fehlerhandling für Eingabefeld
-    	SkiDataForm.writeHatGewonnen(skiDataForm.getName(), skiDataForm.getWeltCup());
+    	SkiDataForm.writeHatGewonnen(skiDataForm.getName(), skiDataForm.getWeltCup(), skiDataForm.getProperty());
     	
     	//Update TBS-DB
 		//SkiWC_updateTDB.executeUpdate(dataset, queryFile);
         
 		//return "redirect:/results";
     	return "redirect:/greeting";
-    } 
+    }
 }
