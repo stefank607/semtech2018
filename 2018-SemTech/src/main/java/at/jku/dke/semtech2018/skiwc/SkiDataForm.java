@@ -99,6 +99,7 @@ public class SkiDataForm {
 	public static void writeHatGewonnen(String name, String weltCup, String property) throws IOException {
 		
 		//TBD Generisch sämtliche Relations ausgeben
+		String property2 = "hatGewonnen";
 		
 		String line = 	
 				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
@@ -111,7 +112,7 @@ public class SkiDataForm {
 				"INSERT DATA { \n" + 
 				"	:" + name + "  a :Skifahrer. \n" + 
 				"};\n" +
-				"INSERT DATA { \n" + ":" + name + " :" + property + ":" + weltCup + "\n};";
+				"INSERT DATA { \n" + ":" + name + " :" + property2 + ":" + weltCup + "\n};";
 		
     	//System.out.println(":" + name + " :hatGewonnen : " + weltCup);
 
