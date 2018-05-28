@@ -1,10 +1,13 @@
 package at.jku.dke.semtech2018.web.controller;
 
+import java.util.List;
+
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ReadWrite;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
@@ -24,18 +27,21 @@ public class GreetingController {
     @GetMapping("/greeting")
     //public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    	//model.addAttribute("name2", m.toString());
-        //model.addAttribute("name", name);
-    	String resstr;
+    	String resstr = "";
     	d.begin(ReadWrite.READ);  
 		try {
-			Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
+			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
+			//Query q = QueryFactory.create("SELECT ?s ?p ?o WHERE { ?s a <http://example.org/Skifahrer>} ?p ?o");
+			Query q = QueryFactory.create("SELECT ?s ?o WHERE { ?s a <http://example.org/Skifahrer>; <http://example.org/hatGewonnen> ?o}");
 			try (QueryExecution qEx = QueryExecutionFactory.create(q,d) ) {
 				ResultSet res = qEx.execSelect();
-				ResultSetFormatter.out(System.out, res, q);
-				resstr = ResultSetFormatter.asText(res);
+				//ResultSetFormatter.out(System.out, res, q);
+				//resstr = ResultSetFormatter.asText(res, q); //Funktioniert!! Aber Ausgabe in einem durchgehenden String
+				List<QuerySolution> list = ResultSetFormatter.toList(res);
+				for (QuerySolution qs : list) {
+					resstr = resstr + qs.toString();
+				}
 				model.addAttribute("result", resstr);
-				//INFO Stefan: Ausgabe des  DB-Inhalts auf der Console funkioniert, an greeting.html wird leider nur die erste Zeile übergeben...
 			}
 		} finally { d.end(); }
 

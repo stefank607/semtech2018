@@ -1,7 +1,5 @@
 package at.jku.dke.semtech2018.skiwc;
 
-import java.util.ArrayList;
-
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;

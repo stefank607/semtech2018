@@ -92,9 +92,21 @@ INSERT DATA {
 };
 
 INSERT DATA {
-	:FranzKlammer :hatGewonnen :Abfahrtsweltcup1977
+	:Abfahrtsweltcup2002 a :Weltcup.
 };
 
 INSERT DATA {
-	:Abfahrtsweltcup1977 :hatStattgefunden :1977
+	:FranzKlammer :hatGewonnen :Abfahrtsweltcup1977.
+};
+
+INSERT DATA {
+	:MichaelaDorfmeister :hatGewonnen :Abfahrtsweltcup2002.
+};
+
+INSERT DATA {
+	:Abfahrtsweltcup1977 :hatStattgefunden :1977.
+};
+
+INSERT DATA {
+	:Abfahrtsweltcup2002 :hatStattgefunden :2002
 };
