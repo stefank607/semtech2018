@@ -107,15 +107,22 @@ public class SkiDataForm {
 				"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
 				"INSERT DATA { \n"+
 				"	:" + weltCup + " a :Weltcup. " +
-				"};" +
+				"}; \n" +
 				
 				"INSERT DATA { \n" + 
 				"	:" + name + "  a :Skifahrer. \n" + 
 				"};\n" +
-				"INSERT DATA { \n" + ":" + name + " :" + property2 + ":" + weltCup + "\n};";
+				"INSERT DATA { \n" + 
+				"	:" + name + " :" + property2 + " :" + weltCup + "\n};";
 		
-    	//System.out.println(":" + name + " :hatGewonnen : " + weltCup);
-
+		
+		//File in updatesTDB schreiben
+        File file = new File("C:/dev/git/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");
+        file.createNewFile();
+        FileWriter writer = new FileWriter(file); 
+        writer.write(line); 
+        writer.flush();
+        writer.close();
 		
 		Dataset dataset = TDBFactory.assembleDataset(
 				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
@@ -142,15 +149,5 @@ public class SkiDataForm {
 				dataset.end(); // END TRANSACTION (ABORT IF NO COMMIT)
 			} 
 		}
-
-
-		
-		//File in updatesTDB schreiben
-        File file = new File("C:/dev/git/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/update2.ru");
-        file.createNewFile();
-        FileWriter writer = new FileWriter(file); 
-        writer.write(line); 
-        writer.flush();
-        writer.close();
 	}
 }
