@@ -25,7 +25,7 @@ public class GreetingController {
 	//protected org.apache.jena.rdf.model.Model m;
 	protected Dataset d;
 	
-    @GetMapping("/greeting")
+    @GetMapping("/index")
     //public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     	String resstr = "";
@@ -49,8 +49,8 @@ public class GreetingController {
 			}
 		} finally { d.end(); }
 
-		d.close();
-        return "greeting";
+		//d.close();
+        return "index";
     }
 
 }
