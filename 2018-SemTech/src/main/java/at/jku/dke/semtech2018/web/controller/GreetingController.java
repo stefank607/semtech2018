@@ -25,10 +25,9 @@ public class GreetingController {
 	//protected org.apache.jena.rdf.model.Model m;
 	protected Dataset d;
 	
+	//so im browser erreichbar: http://localhost:8080/index
     @GetMapping("/index")
-    //public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    	String resstr = "";
     	d.begin(ReadWrite.READ);  
 		try {
 			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
@@ -40,11 +39,9 @@ public class GreetingController {
 				List<QuerySolution> list = ResultSetFormatter.toList(res);
 				List<String> listStr = new ArrayList<String>();
 				for (QuerySolution qs : list) {
-					//resstr = resstr + qs.toString();
 					listStr.add(qs.toString());
 					System.out.println(qs.toString());
 				}
-				//model.addAttribute("result", resstr);
 				model.addAttribute("result", listStr);
 			}
 		} finally { d.end(); }
