@@ -1,5 +1,6 @@
 package at.jku.dke.semtech2018.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.jena.query.Dataset;
@@ -24,29 +25,29 @@ public class GreetingController {
 	//protected org.apache.jena.rdf.model.Model m;
 	protected Dataset d;
 	
-    @GetMapping("/greeting")
-    //public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	//so im browser erreichbar: http://localhost:8080/index
+    @GetMapping("/index")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    	String resstr = "";
     	d.begin(ReadWrite.READ);  
 		try {
 			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
-			//Query q = QueryFactory.create("SELECT ?s ?p ?o WHERE { ?s a <http://example.org/Skifahrer>} ?p ?o");
 			Query q = QueryFactory.create("SELECT ?s ?o WHERE { ?s a <http://example.org/Skifahrer>; <http://example.org/hatGewonnen> ?o}");
 			try (QueryExecution qEx = QueryExecutionFactory.create(q,d) ) {
 				ResultSet res = qEx.execSelect();
 				//ResultSetFormatter.out(System.out, res, q);
 				//resstr = ResultSetFormatter.asText(res, q); //Funktioniert!! Aber Ausgabe in einem durchgehenden String
 				List<QuerySolution> list = ResultSetFormatter.toList(res);
+				List<String> listStr = new ArrayList<String>();
 				for (QuerySolution qs : list) {
-					resstr = resstr + qs.toString();
+					listStr.add(qs.toString());
+					System.out.println(qs.toString());
 				}
-				model.addAttribute("result", resstr);
+				model.addAttribute("result", listStr);
 			}
 		} finally { d.end(); }
 
-		d.close();
-        return "greeting";
+		//d.close();
+        return "index";
     }
 
 }

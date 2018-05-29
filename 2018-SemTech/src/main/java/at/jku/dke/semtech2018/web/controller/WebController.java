@@ -30,12 +30,12 @@ public class WebController implements WebMvcConfigurer {
         registry.addViewController("/results").setViewName("results");
     }
 
-    @GetMapping("/")
+    @GetMapping("/form")
     public String showForm(SkiDataForm skiDataForm) {
         return "form";
     }
     
-    @PostMapping ("/")
+    @PostMapping ("/form")
     public String commitData(@Valid SkiDataForm skiDataForm, BindingResult bindingResult) throws IOException {
 		
     	//Schreibt .ru OutputFile aus eingebenen Daten in updatedTBD Folder
@@ -45,7 +45,6 @@ public class WebController implements WebMvcConfigurer {
     	//Update TBS-DB
 		//SkiWC_updateTDB.executeUpdate(dataset, queryFile);
         
-		//return "redirect:/results";
-    	return "redirect:/greeting";
+		return "redirect:/results";
     }
 }

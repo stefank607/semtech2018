@@ -72,6 +72,18 @@ INSERT DATA {
 		rdfs:range :Geschlecht.
 };
 
+INSERT DATA {
+	:hatVornamen a rdf:Property;
+		rdfs:domain :Person;
+		rdfs:range rdfs:Literal;
+};
+
+INSERT DATA {
+	:hatNachnamen a rdf:Property;
+		rdfs:domain :Person;
+		rdfs:range rdfs:Literal;
+};
+
 #################################################################
 #
 #    Individuals
@@ -83,8 +95,24 @@ INSERT DATA {
 	:FranzKlammer  a :Skifahrer.
 };
 
+INSERT DATA {
+	:FranzKlammer :hatVornamen "Franz".
+};
+
+INSERT DATA {
+	:FranzKlammer :hatNachnamen "Klammer".
+};
+
 INSERT DATA{ 
 	:MichaelaDorfmeister a :Skifahrer. 
+};
+
+INSERT DATA {
+	:MichaelaDorfmeister :hatVornamen "Michaela".
+};
+
+INSERT DATA {
+	:MichaelaDorfmeister :hatNachnamen "Dorfmeister".
 };
 
 INSERT DATA {
