@@ -45,6 +45,6 @@ public class WebController implements WebMvcConfigurer {
     	//Update TBS-DB
 		//SkiWC_updateTDB.executeUpdate(dataset, queryFile);
         
-		return "redirect:/results";
+		return "redirect:/index";
     }
 }
