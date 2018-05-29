@@ -16,6 +16,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -27,13 +28,14 @@ import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.sparql.sse.SSE;
 import org.apache.jena.tdb.TDBFactory;
-
-
+import org.apache.jena.tdb.base.file.Location;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.update.GraphStore;
 import org.apache.jena.update.GraphStoreFactory;
 import org.apache.jena.update.UpdateAction;
+import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
+import org.apache.jena.update.UpdateProcessor;
 import org.apache.jena.update.UpdateRequest;
 
 
@@ -101,9 +103,15 @@ public class SkiDataForm {
 
 	public static void writeHatGewonnen(String name, String weltCup, String property) throws IOException {
 		
-		//TBD Generisch sämtliche Relations ausgeben
-		String property2 = "hatGewonnen";
+		Dataset dataset = TDBFactory.assembleDataset(
+		SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
+	
+		/*
+		 * Hier wird noch property 2 manuell gesetzt!!! 
+		 * Dies sollte automatisch aus dem Konstruktor oben entnommen werden
+		 */
 		
+		String property2 = "hatGewonnen";
 		String line = 	
 				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
 				"PREFIX : <http://example.org/> \n" + 
@@ -118,55 +126,78 @@ public class SkiDataForm {
 				"INSERT DATA { \n" + 
 				"	:" + name + " :" + property2 + " :" + weltCup + "\n};";
 		
+	     /*
+	      * ... perform a SPARQL Update https://jena.apache.org/documentation/tdb/tdb_transactions.html
+	      * 
+	      *  Anmerkung: Hier wird nun das wirkliche update durchgeführt auf den Triplestore
+	      *  
+	      *  Bitte wenn möglich den auskommentierten Teil noch lassen für etwaige Probleme. 
+	      *  Ich lösche das dann alles vor Abgabe
+	      *  
+	      */
+		
+		dataset.begin(ReadWrite.WRITE) ;
+		try {
+	     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	     String sparqlUpdateString = StrUtils.strjoinNL(line) ;     
+	     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+	     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+	     proc.execute() ;
+	     
+	     // Finally, commit the transaction.
+	     dataset.commit() ;
+	    } finally { 
+	        dataset.end() ; 
+	    }
 		
 		//File in updatesTDB schreiben
-        File file = new File("C:/dev/git/semtech2018/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");
-        file.createNewFile();
-        FileWriter writer = new FileWriter(file); 
-        writer.write(line); 
-        writer.flush();
-        writer.close();
-		
-		Dataset dataset = TDBFactory.assembleDataset(
-				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
+//        File file = new File("C:/dev/git/semtech2018/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");
+//        file.createNewFile();
+//        FileWriter writer = new FileWriter(file); 
+//        writer.write(line); 
+//        writer.flush();
+//        writer.close();
+//		
+//		Dataset dataset = TDBFactory.assembleDataset(
+//				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
 		
 		/*****************************************************************
 		 * Insert to Graph
+		 * Anmerkung: schreibt es korrekt in einen Graphstore
 		 */
-		// An initially empty GraphStore
-	    GraphStore graphStore = GraphStoreFactory.create();
-        UpdateAction.parseExecute("CREATE GRAPH <http://example/g>", graphStore) ;
-        UpdateAction.parseExecute(line, graphStore) ;
-        System.out.println("\n# Graph content");
-        SSE.write(graphStore) ;
+		// An initially empty GraphStore https://dreampromt.wordpress.com/2012/07/16/sparql-update-operations-with-jena-api/
+	    //GraphStore graphStore = GraphStoreFactory.create(dataset);
+        //UpdateAction.parseExecute(line, graphStore) ;
+        //System.out.println("\n# Graph content");
+        //SSE.write(graphStore) ;
 		
         
         /*
          * Write .ru File to TripleStore Folder
          */
-        
-		File updatesDir = new File(SkiWC_updateTDB.class.getResource("updatesTDB").getPath());     
-		File[] updates = updatesDir.listFiles();
-
-		dataset.begin(ReadWrite.WRITE); // START TRANSACTION
-		try {
-			dataset.getDefaultModel().removeAll(); // delete everything from default model
-			dataset.commit();
-		} finally { dataset.end(); } // END TRANSACTION (ABORT IF NO COMMIT)
-
-		/* execute every update request in its own transaction */
-		for (int i = 0; i < updates.length; i++) {
-			dataset.begin(ReadWrite.WRITE); // START TRANSACTION
-			try {
-				executeUpdate(dataset,updates[i]);
-				dataset.commit();
-			} catch (RuntimeException e) {
-				System.out.println(e.getMessage());
-				dataset.abort(); //
-			} finally { 
-				dataset.end(); // END TRANSACTION (ABORT IF NO COMMIT)
-			} 
-		}
+//        
+//		File updatesDir = new File(SkiWC_updateTDB.class.getResource("updatesTDB").getPath());     
+//		File[] updates = updatesDir.listFiles();
+//
+//		dataset.begin(ReadWrite.WRITE); // START TRANSACTION
+//		try {
+//			dataset.getDefaultModel().removeAll(); // delete everything from default model
+//			dataset.commit();
+//		} finally { dataset.end(); } // END TRANSACTION (ABORT IF NO COMMIT)
+//
+//		/* execute every update request in its own transaction */
+//		for (int i = 0; i < updates.length; i++) {
+//			dataset.begin(ReadWrite.WRITE); // START TRANSACTION
+//			try {
+//				executeUpdate(dataset,updates[i]);
+//				dataset.commit();
+//			} catch (RuntimeException e) {
+//				System.out.println(e.getMessage());
+//				dataset.abort(); //
+//			} finally { 
+//				dataset.end(); // END TRANSACTION (ABORT IF NO COMMIT)
+//			} 
+//		}
 	}
 	
 }
