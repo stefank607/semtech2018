@@ -120,7 +120,7 @@ public class SkiDataForm {
 		
 		
 		//File in updatesTDB schreiben
-        File file = new File("C:/dev/semtech2018/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");
+        File file = new File("C:/dev/git/semtech2018/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");
         file.createNewFile();
         FileWriter writer = new FileWriter(file); 
         writer.write(line); 
