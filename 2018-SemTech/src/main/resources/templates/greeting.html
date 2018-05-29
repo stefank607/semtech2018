@@ -5,39 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="${result} + '!'" />
-    
-    <table>
-	    <tr>
-	    	<th>Name</th>
-	    <tr>
-	    <tr>
-	    	<td>Marcel Hirscher </td>
-	    </tr>
-	    <tr>
-	    	<td>Gerhard Nenning </td>
-	    </tr>
-	    <tr>
-	    	<td>Karl Schranz</td>
-	    </tr>
-	    <tr>
-	    	<td>Alfred Matt</td>
-	    </tr>
-	    <tr>
-	    	<td>Karl Cordin</td>
-	    </tr>
-	    <tr>
-	    	<td>Hansi Hinterseer</td>
-	    </tr>
-	    <tr>
-	    	<td>Franz Klammer</td>
-	    </tr>
-	    <tr>
-	    	<td>Gertrud Gabi</td>
-	    </tr>
-	    
-    </table>
-    
-    
+    <!-- <p th:text="${result} + '!'" />  -->
+	<div th:if="${result != null}">
+    	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
+    	<table>
+    		<tr th:each="item : ${result}">
+    			<td th:text="${item}"></td>
+    			<td><a href="">Details anzeigen...</a></td>
+    		</tr>
+    	</table>
+ 	</div>   
 </body>
 </html>
