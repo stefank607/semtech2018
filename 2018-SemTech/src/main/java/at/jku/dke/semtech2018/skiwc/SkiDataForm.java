@@ -25,10 +25,13 @@ import org.apache.jena.query.ReadWrite;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.sparql.sse.SSE;
 import org.apache.jena.tdb.TDBFactory;
 
 
 import org.apache.jena.riot.Lang;
+import org.apache.jena.update.GraphStore;
+import org.apache.jena.update.GraphStoreFactory;
 import org.apache.jena.update.UpdateAction;
 import org.apache.jena.update.UpdateFactory;
 import org.apache.jena.update.UpdateRequest;
@@ -127,6 +130,21 @@ public class SkiDataForm {
 		Dataset dataset = TDBFactory.assembleDataset(
 				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
 		
+		/*****************************************************************
+		 * Insert to Graph
+		 */
+		// An initially empty GraphStore
+	    GraphStore graphStore = GraphStoreFactory.create();
+        UpdateAction.parseExecute("CREATE GRAPH <http://example/g>", graphStore) ;
+        UpdateAction.parseExecute(line, graphStore) ;
+        System.out.println("\n# Graph content");
+        SSE.write(graphStore) ;
+		
+        
+        /*
+         * Write .ru File to TripleStore Folder
+         */
+        
 		File updatesDir = new File(SkiWC_updateTDB.class.getResource("updatesTDB").getPath());     
 		File[] updates = updatesDir.listFiles();
 
@@ -150,4 +168,5 @@ public class SkiDataForm {
 			} 
 		}
 	}
+	
 }
