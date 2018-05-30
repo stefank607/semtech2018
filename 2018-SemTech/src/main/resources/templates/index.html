@@ -12,7 +12,7 @@
     		<tr th:each="item : ${result}">
     			<td th:text="${item}"></td>
     			<!--  <td><a th:href="@{/index/${item}}">Details anzeigen...</a></td>-->
-    			<td><a th:href="@{/index/{item}}">Details anzeigen...</a></td>
+    			<td><a th:href="@{'/index/' + ${item}}">Details anzeigen...</a></td>
     		</tr>
     	</table>
  	</div>   

@@ -51,6 +51,12 @@ public class GreetingController {
     
     @GetMapping("/index/{detail}")
     public String getDetail(@PathVariable("detail") String detail, Model model) {
+    	//Splitten für Knowledge Graph
+    	String[] result = detail.split(" ");
+    	
+    	//Testausgabe in Konsole
+    	System.out.println(result[0]);
+    	System.out.println(result[1]);
     	return "detail";
     }
 }
