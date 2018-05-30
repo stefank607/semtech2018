@@ -84,6 +84,12 @@ INSERT DATA {
 		rdfs:range rdfs:Literal;
 };
 
+INSERT DATA {
+	:hatBezeichnung a rdf:Property;
+		rdfs:domain :Weltcup;
+		rdfs:range: rdfs:Literal;
+};
+
 #################################################################
 #
 #    Individuals
@@ -120,7 +126,15 @@ INSERT DATA {
 };
 
 INSERT DATA {
+	:Abfahrtsweltcup1977 :hatBezeichnung "Abfahrtsweltcup 1977".
+};
+
+INSERT DATA {
 	:Abfahrtsweltcup2002 a :Weltcup.
+};
+
+INSERT DATA {
+	:Abfahrtsweltcup2002 :hatBezeichnung "Abfahrtsweltcup 2002".
 };
 
 INSERT DATA {

@@ -32,7 +32,8 @@ public class GreetingController {
     	d.begin(ReadWrite.READ);  
 		try {
 			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
-			Query q = QueryFactory.create("SELECT ?s ?o WHERE { ?s a <http://example.org/Skifahrer>; <http://example.org/hatGewonnen> ?o}");
+			//Query q = QueryFactory.create("SELECT ?s ?o WHERE { ?s a <http://example.org/Skifahrer>; <http://example.org/hatGewonnen> ?o}");
+			Query q = QueryFactory.create("SELECT ?nn ?vn ?wc WHERE { ?s <http://example.org/hatGewonnen> ?o; <http://example.org/hatNachnamen> ?nn; <http://example.org/hatVornamen> ?vn. ?o <http://example.org/hatBezeichnung> ?wc}");
 			try (QueryExecution qEx = QueryExecutionFactory.create(q,d) ) {
 				ResultSet res = qEx.execSelect();
 				//ResultSetFormatter.out(System.out, res, q);
@@ -40,15 +41,11 @@ public class GreetingController {
 				List<QuerySolution> list = ResultSetFormatter.toList(res);
 				List<String> listStr = new ArrayList<String>();
 				for (QuerySolution qs : list) {
-					listStr.add(qs.toString());
-					System.out.println(qs.toString());
-					System.out.println("Vorname" + qs.getLiteral("hatVorname"));
+					listStr.add(qs.getLiteral("?vn").toString() + " " + qs.getLiteral("?nn").toString() + " (" + qs.getLiteral("?wc").toString() + ")");
 				}
 				model.addAttribute("result", listStr);
 			}
 		} finally { d.end(); }
-
-		//d.close();
         return "index";
     }
     
