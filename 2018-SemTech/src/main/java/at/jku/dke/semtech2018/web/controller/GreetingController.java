@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -27,7 +28,7 @@ public class GreetingController {
 	
 	//so im browser erreichbar: http://localhost:8080/index
     @GetMapping("/index")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public String greeting(Model model) {
     	d.begin(ReadWrite.READ);  
 		try {
 			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
@@ -41,6 +42,7 @@ public class GreetingController {
 				for (QuerySolution qs : list) {
 					listStr.add(qs.toString());
 					System.out.println(qs.toString());
+					System.out.println("Vorname" + qs.getLiteral("hatVorname"));
 				}
 				model.addAttribute("result", listStr);
 			}
@@ -49,5 +51,9 @@ public class GreetingController {
 		//d.close();
         return "index";
     }
-
+    
+    @GetMapping("/index/{detail}")
+    public String getDetail(@PathVariable("detail") String detail, Model model) {
+    	return "detail";
+    }
 }
