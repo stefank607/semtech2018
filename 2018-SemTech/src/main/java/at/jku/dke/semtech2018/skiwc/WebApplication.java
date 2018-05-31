@@ -23,22 +23,9 @@ public class WebApplication {
 
 	@Bean
 	public Dataset rdf() {
-		// create an empty Model
-		// Model m = ModelFactory.createDefaultModel();
 		Dataset dataset = TDBFactory.assembleDataset(
 				SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
 		return dataset;
-
-		// set namespace prefixes
-		// m.setNsPrefix("", "http://example.org/");
-		// m.setNsPrefix("rdfs", RDFS.getURI());
-
-		// create a resource
-		// Resource example = m.createResource("http://example.org/helloworld");
-
-		// add a property
-		//example.addProperty(RDFS.label, "Hello World!");
-		//return m;
 	}
 
 }
