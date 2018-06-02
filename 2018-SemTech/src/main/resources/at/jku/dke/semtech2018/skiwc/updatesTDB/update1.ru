@@ -9,43 +9,11 @@ PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 #################################################################
 
 INSERT DATA {
-	:Man a rdfs:Class;
-    rdfs:subClassOf :Person.
+	:Skifahrer a rdfs:Class;
 };
 
 INSERT DATA {
-	:Women a rdfs:Class;
-    rdfs:subClassOf :Person.
-};
-
-INSERT DATA {
-	:GesamtWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
-};
-
-INSERT DATA {
-	:RiesentorWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
-};
-
-INSERT DATA {
-	:SlalomWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
-};
-
-INSERT DATA {
-	:AbfahrtsWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
-};
-
-INSERT DATA {
-	:KombiWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
-};
-
-INSERT DATA {
-	:SuperGWC a rdfs:Class;
-		rdfs:subClassOf :Weltcup.
+	:Weltcup a rdfs:Class;
 };
 
 #################################################################
@@ -64,12 +32,6 @@ INSERT DATA {
 	:hatStattgefunden a rdf:Property;
 		rdfs:domain :Weltcup;
 		rdfs:range :Jahr.
-};
-
-INSERT DATA {
-	:hatGeschlecht a rdf:Property;
-		rdfs:domain :Person;
-		rdfs:range :Geschlecht.
 };
 
 INSERT DATA {
@@ -122,6 +84,18 @@ INSERT DATA {
 };
 
 INSERT DATA {
+	:MarcelHirscher a :Skifahrer.
+};
+
+INSERT DATA {
+	:MarcelHirscher :hatVornamen "Marcel".
+};
+
+INSERT DATA {
+	:MarcelHirscher :hatNachnamen "Hirscher".
+};
+
+INSERT DATA {
 	:Abfahrtsweltcup1977 a :Weltcup.
 };
 
@@ -130,11 +104,31 @@ INSERT DATA {
 };
 
 INSERT DATA {
+	:Abfahrtsweltcup1977 :hatStattgefunden :1977.
+};
+
+INSERT DATA {
 	:Abfahrtsweltcup2002 a :Weltcup.
 };
 
 INSERT DATA {
+	:Abfahrtsweltcup2002 :hatStattgefunden :2002.
+};
+
+INSERT DATA {
 	:Abfahrtsweltcup2002 :hatBezeichnung "Abfahrtsweltcup 2002".
+};
+
+INSERT DATA {
+	:Gesamtweltcup2017 a :Weltcup.
+};
+
+INSERT DATA {
+	:Gesamtweltcup2017 :hatBezeichnung "Gesamtweltcup 2017".
+};
+
+INSERT DATA {
+	:Gesamtweltcup2017 :hatStattgefunden :2017.
 };
 
 INSERT DATA {
@@ -146,9 +140,6 @@ INSERT DATA {
 };
 
 INSERT DATA {
-	:Abfahrtsweltcup1977 :hatStattgefunden :1977.
+	:MarcelHirscher :hatGewonnen :Gesamtweltcup2017.
 };
 
-INSERT DATA {
-	:Abfahrtsweltcup2002 :hatStattgefunden :2002
-};
