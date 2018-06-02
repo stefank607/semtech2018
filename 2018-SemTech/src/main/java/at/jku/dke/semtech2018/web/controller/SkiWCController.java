@@ -64,13 +64,29 @@ public class SkiWCController {
     	
     	//Aufruf Knowledge graph
 		org.apache.jena.rdf.model.Model rdfmod = RDFDataMgr.loadModel(
-				//"https://kgsearch.googleapis.com/v1/entities:search?query=michael+jackson&key=AIzaSyBv-_PDRKuF2aYcnfjjWa9HxgXxIrEg_h0&limit=1&indent=True", Lang.JSONLD);
 				"https://kgsearch.googleapis.com/v1/entities:search?query=" + result[0] + "+" + result[1] +"&key=AIzaSyBv-_PDRKuF2aYcnfjjWa9HxgXxIrEg_h0&limit=1&indent=True", Lang.JSONLD);
-		//RDFDataMgr.write(System.out, rdfmod, Lang.JSONLD);
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		RDFDataMgr.write(os, rdfmod, RDFFormat.TURTLE_PRETTY);
-		String dtres = new String(os.toByteArray());
-		model.addAttribute("dtres", dtres);
+
+		Query q = QueryFactory.create("SELECT ?o WHERE {{ ?s <http://schema.org/articleBody> ?o } UNION { ?s <http://schema.org/description> ?o}}");
+		try (QueryExecution qEx = QueryExecutionFactory.create(q,rdfmod) ) {
+			ResultSet res = qEx.execSelect();
+			List<QuerySolution> list = ResultSetFormatter.toList(res);
+			List<String> listStr = new ArrayList<String>();
+			for (QuerySolution qs : list) {
+				listStr.add(qs.getLiteral("?o").toString());
+			}
+			model.addAttribute("result", listStr);
+		}
+		
+		Query q2 = QueryFactory.create("SELECT ?o WHERE { ?s <http://schema.org/url> ?o }");
+		try (QueryExecution qEx = QueryExecutionFactory.create(q2,rdfmod) ) {
+			ResultSet res = qEx.execSelect();
+			List<QuerySolution> list = ResultSetFormatter.toList(res);
+			List<String> listLinks = new ArrayList<String>();
+			for (QuerySolution qs : list) {
+				listLinks.add(qs.getLiteral("?o").toString());
+			}
+			model.addAttribute("resultLinks", listLinks);
+		}
     	return "detail";
     }
 }

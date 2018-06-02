@@ -5,19 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="${detail} + '!'" />
-	<!-- <div th:if="${result != null}">
-    	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner - Detail</h1>
+	<h1>Detailinfos</h1>
+    <p th:text="${detail}" />
+	<div th:if="${result != null}">
     	<table>
     		<tr th:each="item : ${result}">
     			<td th:text="${item}"></td>
-    			<td><a href="">Details anzeigen..</a></td>
     		</tr>
     	</table>
- 	</div> -->  
- 	<div>
- 		<p th:text="${dtres} + ' '" />
- 	</div> 
+ 	</div>
+ 	<div th:if="${resultLinks != null}">
+    	<table>
+    		<tr th:each="item : ${resultLinks}">
+    			<td><a th:href="${item}"><p th:text="${item}" /></a></td>
+    		</tr>
+    	</table>
+ 	</div>  
  	<div>
  		<p>
  		  <a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>

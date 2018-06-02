@@ -10,9 +10,8 @@ public class Ex06_ReadFromWeb {
 	
 	
 		Model model = RDFDataMgr.loadModel(
-				"http://de.dbpedia.org/resource/Linz");
-		RDFDataMgr.read(model, 
-				"http://de.dbpedia.org/resource/Salzburg") ;
+				"https://kgsearch.googleapis.com/v1/entities:search?query=Franz+Klammer&key=AIzaSyBv-_PDRKuF2aYcnfjjWa9HxgXxIrEg_h0&limit=1&indent=True", Lang.JSONLD);
+
 		
 		RDFDataMgr.write(System.out, model, Lang.TURTLE);
 
