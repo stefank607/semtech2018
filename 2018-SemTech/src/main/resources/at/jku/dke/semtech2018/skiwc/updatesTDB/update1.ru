@@ -54,10 +54,34 @@ INSERT DATA {
 
 #################################################################
 #
-#    Individuals
+#    Individuals - Skifahrer
 #
 #################################################################
 
+
+INSERT DATA { 
+	:HannesReichelt  a :Skifahrer.
+};
+
+INSERT DATA {
+	:HannesReichelt :hatVornamen "Hannes".
+};
+
+INSERT DATA {
+	:HannesReichelt :hatNachnamen "Reichelt".
+};
+
+INSERT DATA { 
+	:RenateGoetschl  a :Skifahrer.
+};
+
+INSERT DATA {
+	:RenateGoetschl :hatVornamen "Renate".
+};
+
+INSERT DATA {
+	:RenateGoetschl :hatNachnamen "Goetschl".
+};
 
 INSERT DATA { 
 	:FranzKlammer  a :Skifahrer.
@@ -69,6 +93,18 @@ INSERT DATA {
 
 INSERT DATA {
 	:FranzKlammer :hatNachnamen "Klammer".
+};
+
+INSERT DATA {
+	:NicoleHosp a :Skifahrer.
+};
+
+INSERT DATA {
+	:NicoleHosp :hatVornamen "Nicole".
+};
+
+INSERT DATA {
+	:NicoleHosp :hatNachnamen "Hosp".
 };
 
 INSERT DATA{ 
@@ -93,6 +129,36 @@ INSERT DATA {
 
 INSERT DATA {
 	:MarcelHirscher :hatNachnamen "Hirscher".
+};
+
+#################################################################
+#
+#    Individuals - Weltcups
+#
+#################################################################
+
+INSERT DATA {
+	:SuperGweltcup2007 a :Weltcup.
+};
+
+INSERT DATA {
+	:SuperGweltcup2007 :hatBezeichnung "Super-G Weltcup 2007".
+};
+
+INSERT DATA {
+	:SuperGweltcup2007 :hatStattgefunden :2007.
+};
+
+INSERT DATA {
+	:SuperGweltcup2003 a :Weltcup.
+};
+
+INSERT DATA {
+	:SuperGweltcup2003 :hatBezeichnung "Super-G Weltcup 2003".
+};
+
+INSERT DATA {
+	:SuperGweltcup2003 :hatStattgefunden :2003.
 };
 
 INSERT DATA {
@@ -132,7 +198,37 @@ INSERT DATA {
 };
 
 INSERT DATA {
+	:Gesamtweltcup2006 a :Weltcup.
+};
+
+INSERT DATA {
+	:Gesamtweltcup2006 :hatBezeichnung "Gesamtweltcup 2006".
+};
+
+INSERT DATA {
+	:Gesamtweltcup2006 :hatStattgefunden :2006.
+};
+
+#################################################################
+#
+#    Individuals - hatGewonnen Beziehungen
+#
+#################################################################
+
+INSERT DATA {
+	:HannesReichelt :hatGewonnen :SuperGweltcup2007.
+};
+
+INSERT DATA {
+	:RenateGoetschl :hatGewonnen :SuperGweltcup2003.
+};
+
+INSERT DATA {
 	:FranzKlammer :hatGewonnen :Abfahrtsweltcup1977.
+};
+
+INSERT DATA {
+	:NicoleHosp :hatGewonnen :Gesamtweltcup2006.
 };
 
 INSERT DATA {
