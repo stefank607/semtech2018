@@ -131,6 +131,77 @@ INSERT DATA {
 	:MarcelHirscher :hatNachnamen "Hirscher".
 };
 
+INSERT DATA { 
+	:BenjaminRaich  a :Skifahrer.
+};
+
+INSERT DATA {
+	:BenjaminRaich :hatVornamen "Benjamin".
+};
+
+INSERT DATA {
+	:BenjaminRaich :hatNachnamen "Raich".
+};
+
+INSERT DATA { 
+	:HermannMeier  a :Skifahrer.
+};
+
+INSERT DATA {
+	:HermannMeier :hatVornamen "Hermann".
+};
+
+INSERT DATA {
+	:HermannMeier :hatNachnamen "Meier".
+};
+
+INSERT DATA { 
+	:StefanEberharter  a :Skifahrer.
+};
+
+INSERT DATA {
+	:StefanEberharter :hatVornamen "Stefan".
+};
+
+INSERT DATA {
+	:StefanEberharter :hatNachnamen "Eberharter".
+};
+INSERT DATA { 
+	:FranzKlammer  a :Skifahrer.
+};
+
+INSERT DATA {
+	:FranzKlammer :hatVornamen "Franz".
+};
+
+INSERT DATA {
+	:FranzKlammer :hatNachnamen "Klammer".
+};
+
+INSERT DATA { 
+	:BrigitteTotschnig  a :Skifahrer.
+};
+
+INSERT DATA {
+	:BrigitteTotschnig :hatVornamen "Brigitte".
+};
+
+INSERT DATA {
+	:BrigitteTotschnig :hatNachnamen "Totschnig".
+};
+
+INSERT DATA { 
+	:PetraKronberger  a :Skifahrer.
+};
+
+INSERT DATA {
+	:PetraKronberger :hatVornamen "Petra".
+};
+
+INSERT DATA {
+	:PetraKronberger :hatNachnamen "Kronberger".
+};
+
 #################################################################
 #
 #    Individuals - Weltcups
@@ -208,6 +279,56 @@ INSERT DATA {
 INSERT DATA {
 	:Gesamtweltcup2006 :hatStattgefunden :2006.
 };
+INSERT DATA {
+	:Gesamtweltcup2004 a :Weltcup.
+};
+
+INSERT DATA {
+	:Gesamtweltcup2004 :hatBezeichnung "Gesamtweltcup 2004".
+};
+INSERT DATA {
+	:Gesamtweltcup2004 :hatStattgefunden :2004.
+};
+INSERT DATA {
+	:SuperG2002 a :Weltcup.
+};
+
+INSERT DATA {
+	:SuperG2002 :hatBezeichnung "Super-G Weltcup 2002".
+};
+INSERT DATA {
+	:SuperG2002 :hatStattgefunden :2002.
+};
+INSERT DATA {
+	:Abfahrt1982 a :Weltcup.
+};
+
+INSERT DATA {
+	:Abfahrt1982 :hatBezeichnung "Abfahrt Weltcup 1982".
+};
+INSERT DATA {
+	:Abfahrt1982 :hatStattgefunden :1982.
+};
+INSERT DATA {
+	:Abfahrt1976 a :Weltcup.
+};
+
+INSERT DATA {
+	:Abfahrt1976 :hatBezeichnung "Abfahrt Weltcup 1976".
+};
+INSERT DATA {
+	:Abfahrt1976 :hatStattgefunden :1976.
+};
+INSERT DATA {
+	:Gesamtweltcup1990 a :Weltcup.
+};
+
+INSERT DATA {
+	:Gesamtweltcup1990 :hatBezeichnung "Gesamt Weltcup 1990".
+};
+INSERT DATA {
+	:Gesamtweltcup1990 :hatStattgefunden :1990.
+};
 
 #################################################################
 #
@@ -238,4 +359,30 @@ INSERT DATA {
 INSERT DATA {
 	:MarcelHirscher :hatGewonnen :Gesamtweltcup2017.
 };
+INSERT DATA { 
+	:BenjaminRaich  :hatGewonnen :Gesamtweltcup2006.
+};
+
+
+INSERT DATA { 
+	:HermannMeier  :hatGewonnen :Gesamtweltcup2004.
+};
+
+INSERT DATA { 
+	:StefanEberharter  :hatGewonnen :SuperG2002.
+};
+
+INSERT DATA { 
+	:FranzKlammer  :hatGewonnen :Abfahrt1982.
+};
+
+
+INSERT DATA { 
+	:BrigitteTotschnig  :hatGewonnen :Abfahrt1976.
+};
+
+INSERT DATA { 
+	:PetraKronberger  :hatGewonnen :Gesamtweltcup1990.
+};
+
 

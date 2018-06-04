@@ -3,11 +3,23 @@
 <head>
     <title>Skiweltcup-Gewinner</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="styleSEM.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	
     <!-- <p th:text="${result} + '!'" />  -->
 	<div th:if="${result != null}">
-    	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
+   
     	<table>
     		<tr th:each="item : ${result}">
     			<td th:text="${item}"></td>
@@ -16,10 +28,20 @@
     		</tr>
     	</table>
  	</div>   
- 	<div>
+ 	<div> 		
  		<p>
  		  <a href="/form">Neuen Eintrag hinzuf&uuml;gen</a>
  		</p>
  	</div>
+ 	<div class="header_area">
+	    <div class="jumbotron text-center">
+	        <h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
+	    </div>
+	
+	    <ul>
+	        <li><a href="/index">Home</a></li>
+	        <li><a href="/form">Neuer Eintrag</a></li>
+	    </ul>
+	</div>
 </body>
 </html>
