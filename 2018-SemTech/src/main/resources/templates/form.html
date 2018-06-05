@@ -16,39 +16,59 @@
     <link href="styleSEM.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="header_area">
+	  <div class="jumbotron text-center">
+	  	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
+	  </div>
+	    <ul>
+	        <li><a href="/index">Home</a></li>
+	        <li><a href="/form">Neuer Eintrag</a></li>
+	    </ul>	
+</div>
+
 	<form action="#" th:action="@{/form}" th:object="${skiDataForm}"
 		method="post">
+		<div style="padding-left: 40px; padding-right: 80px;"> 
 		<table>
 			<tr>
-				<td>Name:</td>
-				<td><input type="text" th:field="*{name}" /></td>
-				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
-					Error</td>
+				<td>Name:</td>				
+				<td><input type="text" class="form-control" placeholder="Text input" th:field="*{name}"/></td>
+						<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+					
+				
 			</tr>
-
-			<select>
-				<option value="hatGewonnen">hatGewonnen</option>
-				<option value="hatStattgefunden">hatStattgefunden</option>
-			</select>
-
-
-			<tr>
+		<tr>
+		<td>Relation:</td>
+		<td><select class="form-control">
+		 	<option value="hatGewonnen">hatGewonnen</option>
+			<option value="hatStattgefunden">hatStattgefunden</option>
+			<option value="hatBezeichnung">hatBezeichnung</option>
+			<option value="hatVorname">hatVorname</option>
+			<option value="hatNachname">hatNachname</option>
+		</select>
+		</td>
+		</tr>
+		<tr>
 				<td>Weltcup:</td>
-				<td><input type="text" th:field="*{weltCup}" /></td>
+				<td><input type="text" class="form-control" placeholder="Weltcup input"th:field="*{weltCup}" /></td>
 				<td th:if="${#fields.hasErrors('weltCup')}" th:errors="*{weltCup}">WC
 					Error</td>
 			</tr>
-
-
 			<tr>
-				<td><button type="submit">Submit</button></td>
-			</tr>
-		</table>
-	</form>
-	<div>
+             <td><button type="submit">Submit</button></td>
+	       	</tr>
+			</table>
+		</div>
+
+
+	</form>	
+		<div style="padding-left: 40px; padding-right: 80px;"> 
 		<p>
 			<a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>
 		</p>
+		
 	</div>
+
+	
 </body>
 </html>

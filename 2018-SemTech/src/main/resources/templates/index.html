@@ -13,35 +13,36 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="styleSEM.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>Österreichische Ski-Weltcup Gewinner</title>
 </head>
 <body>
 	
     <!-- <p th:text="${result} + '!'" />  -->
-	<div th:if="${result != null}">
-   
-    	<table>
-    		<tr th:each="item : ${result}">
-    			<td th:text="${item}"></td>
-    			<!--  <td><a th:href="@{/index/${item}}">Details anzeigen...</a></td>-->
-    			<td><a th:href="@{'/index/' + ${item}}">Details anzeigen...</a></td>
-    		</tr>
-    	</table>
- 	</div>   
- 	<div> 		
- 		<p>
- 		  <a href="/form">Neuen Eintrag hinzuf&uuml;gen</a>
- 		</p>
- 	</div>
- 	<div class="header_area">
+     <div class="header_area">
 	    <div class="jumbotron text-center">
 	        <h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
 	    </div>
-	
+    <div style="padding-left: 40px; padding-right: 40px;">	  
 	    <ul>
 	        <li><a href="/index">Home</a></li>
 	        <li><a href="/form">Neuer Eintrag</a></li>
 	    </ul>
-	</div>
+	 </div>	
+	 </div>
+	 
+    <div style="padding-left: 40px; padding-right: 80px;">	 
+	<div th:if="${result != null}">  
+   
+    	<table>
+    		<tr th:each="item : ${result}">
+    			<td th:text="${item}"></td >
+    			<!--  <td><a th:href="@{/index/${item}}">Details anzeigen...</a></td>-->
+    			<td><a th:href="@{'/index/' + ${item}}">Details anzeigen...</a></td>
+    		</tr>
+    	</table>
+ 	</div>  
+ 	</div>
+
 </body>
 </html>

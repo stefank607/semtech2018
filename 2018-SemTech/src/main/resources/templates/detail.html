@@ -13,9 +13,19 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="styleSEM.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="header_area">
+	  <div class="jumbotron text-center">
+	  	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
+	  </div>
+	    <ul>
+	        <li><a href="/index">Home</a></li>
+	        <li><a href="/form">Neuer Eintrag</a></li>
+	    </ul>	
+</div>
+<div style="padding-left: 40px; padding-right: 300px;"> 	   
 	<h1>Detailinfos</h1>
     <p th:text="${detail}" />
 	<div th:if="${result != null}">
@@ -36,6 +46,7 @@
  		<p>
  		  <a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>
  		</p>
+ 	</div>
  	</div>
 </body>
 </html>
