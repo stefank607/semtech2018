@@ -144,27 +144,27 @@ INSERT DATA {
 };
 
 INSERT DATA { 
-	:HermannMeier  a :Skifahrer.
+	:HermannMaier  a :Skifahrer.
 };
 
 INSERT DATA {
-	:HermannMeier :hatVornamen "Hermann".
+	:HermannMaier :hatVornamen "Hermann".
 };
 
 INSERT DATA {
-	:HermannMeier :hatNachnamen "Meier".
+	:HermannMaier :hatNachnamen "Maier".
 };
 
 INSERT DATA { 
-	:StefanEberharter  a :Skifahrer.
+	:StephanEberharter  a :Skifahrer.
 };
 
 INSERT DATA {
-	:StefanEberharter :hatVornamen "Stefan".
+	:StephanEberharter :hatVornamen "Stephan".
 };
 
 INSERT DATA {
-	:StefanEberharter :hatNachnamen "Eberharter".
+	:StephanEberharter :hatNachnamen "Eberharter".
 };
 INSERT DATA { 
 	:FranzKlammer  a :Skifahrer.
@@ -365,11 +365,11 @@ INSERT DATA {
 
 
 INSERT DATA { 
-	:HermannMeier  :hatGewonnen :Gesamtweltcup2004.
+	:HermannMaier  :hatGewonnen :Gesamtweltcup2004.
 };
 
 INSERT DATA { 
-	:StefanEberharter  :hatGewonnen :SuperG2002.
+	:StephanEberharter  :hatGewonnen :SuperG2002.
 };
 
 INSERT DATA { 
