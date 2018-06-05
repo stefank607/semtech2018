@@ -46,7 +46,7 @@ public class WebController implements WebMvcConfigurer {
         List<String> list = PredicateDAO.getPredicates();
         model.addAttribute("predicates", list);
     	
-    	System.out.println(skiDataForm.getProperty());
+    	//System.out.println(skiDataForm.getProperty());
     	
     	SkiDataForm.writeHatGewonnen(skiDataForm.getName(), skiDataForm.getWeltCup(), skiDataForm.getProperty());
     	

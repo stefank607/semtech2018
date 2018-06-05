@@ -31,7 +31,7 @@
 		method="post">
 		<table>
 			<tr>
-				<td>Subjekt:</td>
+				<td>Subjekt:   </td>
 				<td><input type="text" th:field="*{name}" /></td>
 				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
 					Error</td>
@@ -41,7 +41,7 @@
 			<form name='f' th:object="${skiDataForm}" method='POST'>
         	<table>
 	            <tr>
-	                <td>Pr&auml;dikat ausw&auml;hlen:</td>
+	                <td>Pr&auml;dikat ausw&auml;hlen:   </td>
 	                <td>
 	                    <select th:field="*{property}">
 	                         <option value=""> -- </option>
@@ -54,7 +54,7 @@
 	            </tr>
 	            
 	       <tr>
-				<td>Objekt:</td>
+				<td>Objekt:   </td>
 				<td><input type="text" th:field="*{weltCup}" /></td>
 				<td th:if="${#fields.hasErrors('weltCup')}" th:errors="*{weltCup}">WC
 					Error</td>
