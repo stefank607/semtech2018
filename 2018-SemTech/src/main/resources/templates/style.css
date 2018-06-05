@@ -1,0 +1,72 @@
+@charset "ISO-8859-1";
+
+/* properties for the top menu */
+h1 {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    margin-bottom: 80px;
+  	margin-top:    20px; 
+  	margin-left: 	40px;
+}
+
+body {
+	marginwidth= 50px; 
+	marginheight= 100px; 
+	topmargin= 100px; 
+	leftmargin= 50px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+/* defines width of global menu*/
+.header_area {
+    margin: auto;
+    width: 60%;
+}
+/*buttons */
+.btn {
+  background: #d8c4f5;
+  background-image: -webkit-linear-gradient(top, #d8c4f5, #2980b9);
+  background-image: -moz-linear-gradient(top, #d8c4f5, #2980b9);
+  background-image: -ms-linear-gradient(top, #d8c4f5, #2980b9);
+  background-image: -o-linear-gradient(top, #d8c4f5, #2980b9);
+  background-image: linear-gradient(to bottom, #d8c4f5, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
