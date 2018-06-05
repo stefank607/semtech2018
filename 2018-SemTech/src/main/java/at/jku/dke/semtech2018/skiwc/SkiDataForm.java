@@ -50,7 +50,7 @@ public class SkiDataForm {
     private String name;
     private String weltCup;
     private int jahr;
-    private String property;
+    public String property;
 
     
     public int getJahr() {
@@ -111,7 +111,7 @@ public class SkiDataForm {
 		 * Dies sollte automatisch aus dem Konstruktor oben entnommen werden
 		 */
 		
-		String property2 = "hatGewonnen";
+		//String property2 = "hatGewonnen";
 		String line = 	
 				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
 				"PREFIX : <http://example.org/> \n" + 
@@ -124,7 +124,9 @@ public class SkiDataForm {
 				"	:" + name + "  a :Skifahrer. \n" + 
 				"};\n" +
 				"INSERT DATA { \n" + 
-				"	:" + name + " :" + property2 + " :" + weltCup + "\n};";
+				"	:" + name + " :" + property + " :" + weltCup + "\n};";
+		
+		System.out.println(line);
 		
 	     /*
 	      * ... perform a SPARQL Update https://jena.apache.org/documentation/tdb/tdb_transactions.html
