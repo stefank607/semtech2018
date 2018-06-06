@@ -35,13 +35,13 @@
     		</tr>
     	</table>
  	</div>
- 	<div th:if="${resultLinks != null}">
+  	<div th:if="${resultLinks != null}">
     	<table>
     		<tr th:each="item : ${resultLinks}">
     			<td><a th:href="${item}"><p th:text="${item}" /></a></td>
     		</tr>
     	</table>
- 	</div>  
+ 	</div>
  	<div>
  		<p>
  		  <a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>

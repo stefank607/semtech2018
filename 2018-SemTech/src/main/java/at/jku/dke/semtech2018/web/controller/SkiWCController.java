@@ -54,32 +54,34 @@ public class SkiWCController {
     public String getDetail(@PathVariable("detail") String detail, Model model) {
     	//Splitten für Knowledge Graph
     	String[] result = detail.split(" ");
+    	if(result.length >= 2) {
     	//Aufruf Knowledge graph
-		org.apache.jena.rdf.model.Model rdfmod = RDFDataMgr.loadModel(
+    		org.apache.jena.rdf.model.Model rdfmod = RDFDataMgr.loadModel(
 				"https://kgsearch.googleapis.com/v1/entities:search?query=" + result[0] + "+" + result[1] +"&key=AIzaSyBv-_PDRKuF2aYcnfjjWa9HxgXxIrEg_h0&limit=1&indent=True", Lang.JSONLD);
 
-		Query q = QueryFactory.create("SELECT ?o WHERE {{ ?s <http://schema.org/articleBody> ?o } UNION { ?s <http://schema.org/description> ?o}}");
-		try (QueryExecution qEx = QueryExecutionFactory.create(q,rdfmod) ) {
-			ResultSet res = qEx.execSelect();
-			List<QuerySolution> list = ResultSetFormatter.toList(res);
-			List<String> listStr = new ArrayList<String>();
-			for (QuerySolution qs : list) {
-				listStr.add(qs.getLiteral("?o").toString());
+			Query q = QueryFactory.create("SELECT ?o WHERE {{ ?s <http://schema.org/articleBody> ?o } UNION { ?s <http://schema.org/description> ?o}}");
+			try (QueryExecution qEx = QueryExecutionFactory.create(q,rdfmod) ) {
+				ResultSet res = qEx.execSelect();
+				List<QuerySolution> list = ResultSetFormatter.toList(res);
+				List<String> listStr = new ArrayList<String>();
+				for (QuerySolution qs : list) {
+					listStr.add(qs.getLiteral("?o").toString());
+				}
+				Collections.reverse(listStr);
+				model.addAttribute("result", listStr);
 			}
-			Collections.reverse(listStr);
-			model.addAttribute("result", listStr);
-		}
 		
-		Query q2 = QueryFactory.create("SELECT ?o WHERE { ?s <http://schema.org/url> ?o }");
-		try (QueryExecution qEx = QueryExecutionFactory.create(q2,rdfmod) ) {
-			ResultSet res = qEx.execSelect();
-			List<QuerySolution> list = ResultSetFormatter.toList(res);
-			List<String> listLinks = new ArrayList<String>();
-			for (QuerySolution qs : list) {
-				listLinks.add(qs.getLiteral("?o").toString());
+			Query q2 = QueryFactory.create("SELECT ?o WHERE { ?s <http://schema.org/url> ?o }");
+			try (QueryExecution qEx = QueryExecutionFactory.create(q2,rdfmod) ) {
+				ResultSet res = qEx.execSelect();
+				List<QuerySolution> list = ResultSetFormatter.toList(res);
+				List<String> listLinks = new ArrayList<String>();
+				for (QuerySolution qs : list) {
+					listLinks.add(qs.getLiteral("?o").toString());
+				}
+				model.addAttribute("resultLinks", listLinks);
 			}
-			model.addAttribute("resultLinks", listLinks);
-		}
+    	}
     	return "detail";
     }
 }
