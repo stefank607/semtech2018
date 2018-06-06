@@ -32,9 +32,13 @@ public class SkiWCController {
     public String greeting(Model model) {
     	d.begin(ReadWrite.READ);  
 		try {
-			//Query q = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
+			Query qt = QueryFactory.create("SELECT ?s ?p ?o ?g WHERE {{?s ?p ?o} UNION {GRAPH ?g {?s ?p ?o}}}");
 			//Query q = QueryFactory.create("SELECT ?s ?o WHERE { ?s a <http://example.org/Skifahrer>; <http://example.org/hatGewonnen> ?o}");
 			Query q = QueryFactory.create("SELECT ?nn ?vn ?wc WHERE { ?s <http://example.org/hatGewonnen> ?o; <http://example.org/hatNachnamen> ?nn; <http://example.org/hatVornamen> ?vn. ?o <http://example.org/hatBezeichnung> ?wc}");
+		    try (QueryExecution qEx = QueryExecutionFactory.create(qt,d) ) {
+		    	ResultSet res = qEx.execSelect();
+		    	ResultSetFormatter.out(System.out, res, q);
+		    }
 			try (QueryExecution qEx = QueryExecutionFactory.create(q,d) ) {
 				ResultSet res = qEx.execSelect();
 				//ResultSetFormatter.out(System.out, res, q);
