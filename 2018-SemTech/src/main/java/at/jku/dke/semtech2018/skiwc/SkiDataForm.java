@@ -47,10 +47,12 @@ public class SkiDataForm {
 
     @NotNull
     @Size(min=2, max=30)
-    private String name;
-    private String weltCup;
+    private String subject;
+    private String object;
+    private String type1;
+    private String type2;
     private int jahr;
-    private String property;
+    public String property;
 
     
     public int getJahr() {
@@ -72,19 +74,19 @@ public class SkiDataForm {
 	
 
 	public String getName() {
-        return this.name;
+        return this.subject;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.subject = name;
     }
 
 	public String getWeltCup() {
-		return weltCup;
+		return object;
 	}
 
 	public void setWeltCup(String weltCup) {
-		this.weltCup = weltCup;
+		this.object = weltCup;
 	}
 	
 	public static void executeUpdate(Dataset ds, File queryFile) {
@@ -101,7 +103,7 @@ public class SkiDataForm {
 		RDFDataMgr.write(System.out, ds, Lang.TRIG);
 	}
 
-	public static void writeHatGewonnen(String name, String weltCup, String property) throws IOException {
+	public static void writeHatGewonnen(String subject, String object, String property) throws IOException {
 		
 		Dataset dataset = TDBFactory.assembleDataset(
 		SkiWC_updateTDB.class.getResource("skiwc-assembler.ttl").getPath()) ;
@@ -111,20 +113,51 @@ public class SkiDataForm {
 		 * Dies sollte automatisch aus dem Konstruktor oben entnommen werden
 		 */
 		
-		String property2 = "hatGewonnen";
-		String line = 	
+		//String property2 = "hatGewonnen";
+		
+		String lineHatVornamen = 	
+				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
+				"PREFIX : <http://example.org/> \n" + 
+				"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
+				"INSERT DATA { \n" + 
+				"	:" + subject + " :" + property + " \"" + object + "\"\n};";
+		
+		String lineHatNachnamen = 	
+				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
+				"PREFIX : <http://example.org/> \n" + 
+				"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
+				"INSERT DATA { \n" + 
+				"	:" + subject + " :" + property + " \"" + object + "\"\n};";
+		
+		String lineHatGewonnen = 	
 				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
 				"PREFIX : <http://example.org/> \n" + 
 				"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
 				"INSERT DATA { \n"+
-				"	:" + weltCup + " a :Weltcup. " +
+				"	:" + object + " a :Weltcup. \n" +
 				"}; \n" +
 				
 				"INSERT DATA { \n" + 
-				"	:" + name + "  a :Skifahrer. \n" + 
+				"	:" + subject + "  a :Skifahrer. \n" + 
 				"};\n" +
 				"INSERT DATA { \n" + 
-				"	:" + name + " :" + property2 + " :" + weltCup + "\n};";
+				"	:" + subject + " :" + property + " :" + object + ".\n};";
+		
+		String lineHatStattgefunden = 	
+				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
+						"PREFIX : <http://example.org/> \n" + 
+						"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
+						"INSERT DATA { \n" + 
+						"	:" + subject + " :" + property + " :" + object + ".\n};";
+		
+		
+		String lineHatBezeichnung = 	
+				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n" + 
+						"PREFIX : <http://example.org/> \n" + 
+						"PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \n" +
+						"INSERT DATA { \n" + 
+						"	:" + subject + " :" + property + " \"" + object + "\"\n};";
+		
 		
 	     /*
 	      * ... perform a SPARQL Update https://jena.apache.org/documentation/tdb/tdb_transactions.html
@@ -134,21 +167,94 @@ public class SkiDataForm {
 	      *  Bitte wenn möglich den auskommentierten Teil noch lassen für etwaige Probleme. 
 	      *  Ich lösche das dann alles vor Abgabe
 	      *  
+	      *  String p1 = "hatGewonnen";
+        	String p2 = "hatVornamen";
+        	String p3 = "hatNachnamen";
+        	String p4 = "hatStattgefunden";
+        	String p5 = "hatBezeichnung";
+	      *  
 	      */
 		
-		dataset.begin(ReadWrite.WRITE) ;
-		try {
-	     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
-	     String sparqlUpdateString = StrUtils.strjoinNL(line) ;     
-	     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
-	     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
-	     proc.execute() ;
-	     
-	     // Finally, commit the transaction.
-	     dataset.commit() ;
-	    } finally { 
-	        dataset.end() ; 
-	    }
+		
+	     if(property.equals("hatGewonnen")){
+	    	 try {
+	    	 dataset.begin(ReadWrite.WRITE) ;
+		     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	    	 System.out.println("gewonnen: \n" + lineHatGewonnen);
+	    	 String sparqlUpdateString = StrUtils.strjoinNL(lineHatGewonnen) ;     
+		     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+		     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+		     proc.execute();
+		  // Finally, commit the transaction.
+		     dataset.commit() ;
+	    	 } finally {
+		     dataset.end() ; 
+	    	 }
+
+	     }
+	     else if(property.equals("hatStattgefunden")){
+	    	 try {
+	    	 dataset.begin(ReadWrite.WRITE) ;
+		     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	    	 System.out.println(lineHatStattgefunden);
+	    	 String sparqlUpdateString = StrUtils.strjoinNL(lineHatStattgefunden) ;     
+		     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+		     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+		     proc.execute();
+		  // Finally, commit the transaction.
+		     dataset.commit() ;
+	    	 } finally {
+			 dataset.end() ; 
+	    	 }
+
+	     }
+	     else if(property.equals("hatVornamen")){
+	    	 try {
+	    	 dataset.begin(ReadWrite.WRITE) ;
+		     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	    	 System.out.println(lineHatVornamen);
+	    	 String sparqlUpdateString = StrUtils.strjoinNL(lineHatVornamen) ;     
+		     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+		     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+		     proc.execute();
+		  // Finally, commit the transaction.
+		     dataset.commit() ;
+	    	 } finally {
+		     dataset.end() ; 
+	    	 }
+	     }
+	     else if(property.equals("hatNachnamen")){
+	    	 try {
+	    	 dataset.begin(ReadWrite.WRITE) ;
+		     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	    	 System.out.println(property);
+	    	 System.out.println(lineHatNachnamen);
+	    	 String sparqlUpdateString = StrUtils.strjoinNL(lineHatNachnamen) ;     
+		     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+		     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+		     proc.execute();
+		  // Finally, commit the transaction.
+		     dataset.commit() ;
+	     	 } finally {
+		     dataset.end() ; 
+	    	 } 
+
+	     }
+	     else if(property.equals("hatBezeichnung")) {
+	    	 try {
+	    	 dataset.begin(ReadWrite.WRITE) ;
+		     GraphStore graphStore = GraphStoreFactory.create(dataset) ;
+	    	 System.out.println("bezeichnung: " + lineHatBezeichnung + "\n");
+	     	System.out.println("property: " + property);
+	    	 String sparqlUpdateString = StrUtils.strjoinNL(lineHatBezeichnung) ;     
+		     UpdateRequest request = UpdateFactory.create(sparqlUpdateString) ;
+		     UpdateProcessor proc = UpdateExecutionFactory.create(request, graphStore) ;
+		     proc.execute();	     
+		     dataset.commit() ;
+	    	 } finally {
+			 dataset.end() ; 
+		     }
+	     }
 		
 		//File in updatesTDB schreiben
 //        File file = new File("C:/dev/git/semtech2018/2018-SemTech/src/main/resources/at/jku/dke/semtech2018/skiwc/updatesTDB/" + name + property2 + weltCup + ".ru");

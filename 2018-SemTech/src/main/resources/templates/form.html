@@ -20,16 +20,14 @@
 	  <div class="jumbotron text-center">
 	  	<h1>&Ouml;sterreichische Ski-Weltcup Gewinner</h1>
 	  </div>
-	  <div style="padding-left: 40px; padding-right: 40px;">
 	    <ul>
 	        <li><a href="/index">Home</a></li>
 	        <li><a href="/form">Neuer Eintrag</a></li>
-	    </ul>
-	    </div>	
+	    </ul>	
 </div>
 
 
-<!--	<form action="#" th:action="@{/form}" th:object="${skiDataForm}"
+	<form action="#" th:action="@{/form}" th:object="${skiDataForm}"
 		method="post">
 		<table>
 			<tr>
@@ -38,40 +36,14 @@
 				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
 					Error</td>
 			</tr>
-			-->
-<!-- <<<<<<< HEAD -->
-	<!--  	<tr>
-		<td>Relation:</td>
-		<td><select class="form-control">
-		 	<option value="hatGewonnen">hatGewonnen</option>
-			<option value="hatStattgefunden">hatStattgefunden</option>
-			<option value="hatBezeichnung">hatBezeichnung</option>
-			<option value="hatVorname">hatVorname</option>
-			<option value="hatNachname">hatNachname</option>
-		</select>
-		
-		</td>
-		</tr>
-		<tr>
-				<td>Weltcup:</td>
-				<td><input type="text" class="form-control" placeholder="Weltcup input"th:field="*{weltCup}" /></td>
--->
-<!-- ======= -->
 
 			
 			<form name='f' th:object="${skiDataForm}" method='POST'>
-				  <div style="padding-left: 40px; padding-right: 40px;">
         	<table>
-				<tr>
-					<td>Subjekt:   </td>
-					<td><input class="form-control" type="text" th:field="*{name}" /></td>
-					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
-						Error</td>
-				</tr>
 	            <tr>
 	                <td>Pr&auml;dikat ausw&auml;hlen:   </td>
 	                <td>
-	                    <select class="form-control" th:field="*{property}">
+	                    <select th:field="*{property}">
 	                         <option value=""> -- </option>
 	                         <option th:each="predicate : ${predicates}"
 	                            th:value="${predicate}"
@@ -83,21 +55,23 @@
 	            
 	       <tr>
 				<td>Objekt:   </td>
-				<td><input class="form-control" type="text" th:field="*{weltCup}" /></td>
-<!--  branch 'master' of https://github.com/stefank607/semtech2018  -->
+				<td><input type="text" th:field="*{weltCup}" /></td>
 				<td th:if="${#fields.hasErrors('weltCup')}" th:errors="*{weltCup}">WC
 					Error</td>
 			</tr>
 	            
 	       <tr>
-	       		<td><a  class="form-control" href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>
-	       		</td>
-				<td><button style = "background-color: #C6E2FF;" class="form-control" type="submit">Submit</button></td>
+				<td><button type="submit">Submit</button></td>
 			</tr>
 	            
        		 </table>
-       		 </div>
-    		</form>	
-
+    		</form>
+		</table>
+	</form>
+	<div>
+		<p>
+			<a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>
+		</p>
+	</div>
 </body>
 </html>
