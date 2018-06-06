@@ -54,6 +54,7 @@ public class SkiWCController {
         return "index";
     }
     
+    
     @GetMapping("/index/{detail}")
     public String getDetail(@PathVariable("detail") String detail, Model model) {
     	//Splitten für Knowledge Graph
