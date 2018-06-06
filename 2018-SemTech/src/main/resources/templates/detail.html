@@ -35,14 +35,18 @@
     		</tr>
     	</table>
  	</div>
+<!--<<<<<<< HEAD  -->
  	
  	<div th:if="${resultLinks != null}">
+<!-- ======= -->
+  	<div th:if="${resultLinks != null}">
+<!----- branch 'master' of https://github.com/stefank607/semtech2018 ---->
     	<table>
     		<tr th:each="item : ${resultLinks}">
     			<td><a th:href="${item}"><p th:text="${item}" /></a></td>
     		</tr>
     	</table>
- 	</div>  
+ 	</div>
  	<div>
  		<p>
  		  <a href="/index">Zur&uuml;ck zur &Uuml;bersicht</a>
